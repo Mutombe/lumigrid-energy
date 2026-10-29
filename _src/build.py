@@ -14,6 +14,7 @@ The body is wrapped in _src/partials/layout.html. Inside any page or partial,
 {{> name}} inserts _src/partials/name.html (or name.svg), and {{key}} inserts a
 front-matter value. Output is written to the project root.
 """
+import hashlib
 import os
 import re
 
@@ -55,6 +56,15 @@ def nav_links(active, cls):
     return "\n".join(out)
 
 
+def bust(html):
+    """Stamp CSS and JS links with a content hash so browsers and the CDN fetch a new file after each change."""
+    def stamp(m):
+        path = os.path.join(ROOT, m.group(2))
+        v = hashlib.sha1(open(path, "rb").read()).hexdigest()[:10]
+        return f'{m.group(1)}{m.group(2)}?v={v}"'
+    return re.sub(r'((?:href|src)=")(assets/(?:css|js)/[\w.-]+\.(?:css|js))"', stamp, html)
+
+
 def main():
     layout = partial("layout")
     for fname in sorted(os.listdir(PAGES)):
@@ -68,6 +78,7 @@ def main():
         ctx["body"] = raw[m.end():]
         html = render(layout, ctx)
         html = render(html, ctx)  # second pass for tokens inside the body
+        html = bust(html)
         with open(os.path.join(ROOT, fname), "w", encoding="utf8", newline="\n") as f:
             f.write(html)
         print("built", fname)
