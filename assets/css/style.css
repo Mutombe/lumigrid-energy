@@ -811,7 +811,7 @@ body.menu-open { overflow: hidden; }
 }
 .section-head--center { grid-template-columns: 1fr; text-align: center; justify-items: center; }
 .section-head .lede { max-width: 46ch; }
-.section-head .tag { margin-bottom: 18px; }
+.section-head .tag { margin-bottom: 12px; }
 
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .tcard {
@@ -1649,3 +1649,28 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border: 0; ba
 
 /* images hold a neutral ground while they load */
 .pcard img, .svc__img img, .hcard__thumb img, .story__imgs img, .qcard__av, .avatars img { background: var(--stone); }
+
+/* ---------------------------------------------------------------- composition pass */
+/* proximity: a label belongs to its heading (12px), the heading to its copy (20px+) */
+:is(.split__body, .story__body, .testi__copy) > .tag + :is(h2, .h2) { margin-top: -8px; }
+.tag + .h2.mt-s { margin-top: 12px; }
+
+/* icon lists: the hover wash bleeds past the column so icons sit on the text edge */
+.ilist:not(.ilist--boxed) li { margin-inline: -10px; }
+
+/* home about: the copy starts on the photo's top edge rather than the tag's, so both columns hang
+   from one line and end within a few pixels of each other; 6px less for the statement's leading */
+@media (min-width: 901px) {
+  .about__copy { padding-top: calc(34px + 28px - 6px); }
+}
+
+/* mission / vision / promise: one shared row for titles and one for copy, whatever the copy length */
+@media (min-width: 901px) {
+  .mv { grid-template-rows: minmax(132px, 1fr) auto auto; }
+  .mv__card { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-items: start; }
+  .mv__card h3 { margin-top: 0; align-self: end; }
+}
+
+/* banner minis: titles share a top line, descriptions share a bottom line */
+.mini > span:last-child { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; padding: 6px 0 4px; }
+.mini p { margin-top: 0; }
