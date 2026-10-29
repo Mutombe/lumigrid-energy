@@ -60,6 +60,24 @@ Reveals run 700ms with 24px of travel and an 85ms word stagger, and every animat
 
 If `main.js` fails to load, an inline failsafe removes the hidden pre-animation state on `load`, so content never stays invisible. Without JavaScript at all, every section renders in place.
 
+### Patterns
+
+One system in `style.css` (`.pat`) draws every pattern. A pattern (`--pm`) is intersected with a soft fade anchored to a corner, then painted in `currentColor` at low opacity. Add one with a span:
+
+```html
+<span class="pat pat--cells pat--tr" style="--pc:var(--amber);--pw:70%;--po:.2" aria-hidden="true"></span>
+```
+
+- Kinds: `cells` (solar panel), `hex` (battery cells), `rings` (orbit), `rays` (sun), `dots` (halftone), `waves` (water), `plus` (drafting grid).
+- Anchors: `tr`, `tl`, `br`, `bl`, `c`.
+- Variables: `--pc` colour, `--pw` width, `--po` opacity.
+
+Each pattern matches what it sits on: cells on solar cards, honeycomb on storage, rings on monitoring and around the hero objects, waves on water, rays on featured and open items, halftone and rings in the footer.
+
+### Hero carousel
+
+The centre hero card rotates through three slides with their own designs: installs (photo, faces, count), live output (gauge and sparkline) and client rating. The progress bars are the timer. A bar's fill animation ends, and that advances the slide, so hovering or keyboard focus pauses both together. Phones swipe between slides.
+
 ### Grounds
 
 Sections alternate between paper, a dark band with a faint grid (`.band--dark.tex-grid`, the process timeline) and an amber band with hatching (`.band--amber.tex-hatch`, the marquee). The stats sit on a dotted ground (`.tex-dots`).
@@ -92,7 +110,7 @@ These are ray-marched from signed distance functions in numpy (`_src/tools/rende
 Search the sources for `PLACEHOLDER` to find these.
 
 1. **Stats.** Placeholder figures: 5+ years, 350+ systems, 1.2 MW, 80% savings. They appear in `_src/partials/stats.html` and in the hero card.
-2. **Testimonials.** All six reviews and the 4.9 rating in `_src/partials/wheel.html` are placeholders. Replace them with real clients' words, with their permission.
+2. **Testimonials.** All six reviews, their stock faces, the hero rating slide and the 4.9 rating in `_src/partials/wheel.html` are placeholders. Replace them with real clients' words, with their permission.
 3. **Email.** `info@lumigridenergy.co.zw` is assumed. Confirm the real address.
 4. **Office hours** are assumed.
 5. **Service towns** on the coverage map (`_src/partials/coverage.html`).
@@ -104,3 +122,4 @@ Search the sources for `PLACEHOLDER` to find these.
 - `assets/img/stock-<id>-*.webp` are **iStock comp images with visible watermarks**. License each one on iStock using the ID in the filename, then rerun `images.py` with the licensed files (same filenames).
 - `assets/img/projects/job-*.webp` are Lumigrid's own installation photos, taken from their public tender-board profile.
 - The remaining photos come from the client's folder without watermarks. Confirm usage rights for any that are not Lumigrid's own.
+- `assets/img/faces/*.webp` are portraits from [Pexels](https://www.pexels.com) (free licence, no attribution required): photos 15929275, 1804452, 19355372, 12348737, 16047707 and 12672215. They stand in for clients on the placeholder testimonials. Replace them with real clients' photos, with consent, along with the quotes.

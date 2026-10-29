@@ -17,6 +17,8 @@
       if (y < lastY - 4) nav.classList.remove('is-hidden');
     }
     lastY = y;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    nav.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
   };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -194,6 +196,9 @@
     const sun = Math.max(0, Math.sin(((h - 6) / 12.5) * Math.PI));
     const kw = (sun * 4.6 + (sun > 0 ? Math.random() * 0.12 : 0)).toFixed(2);
     live.forEach(el => { el.textContent = kw; });
+    const pct = Math.round(kw / 5 * 100);
+    $$('[data-live-ring]').forEach(c => c.style.setProperty('--off', 100 - pct));
+    $$('[data-live-pct]').forEach(el => { el.textContent = pct; });
     sparkData.push(0.55 + 0.25 * Math.sin(sparkData.length / 3) + Math.random() * 0.12);
     sparkData.shift();
     spark.forEach(svg => {
@@ -378,6 +383,47 @@
     place(); auto();
   });
 
+  /* ------------------------------------------------------------ hero carousel card */
+  $$('[data-hslides]').forEach(card => {
+    const slides = $$('.hslide', card);
+    const tabs = $$('.hslides__nav button', card);
+    let active = 0;
+    const show = i => {
+      active = (i + slides.length) % slides.length;
+      card.dataset.slide = active;
+      slides.forEach((s, j) => {
+        const on = j === active;
+        s.classList.toggle('is-active', on);
+        s.inert = !on;
+        s.setAttribute('aria-hidden', !on);
+      });
+      // restart the fill animation on the newly selected bar
+      tabs.forEach((t, j) => t.setAttribute('aria-selected', 'false'));
+      void card.offsetWidth;
+      tabs[active].setAttribute('aria-selected', 'true');
+    };
+    tabs.forEach((t, j) => t.addEventListener('click', () => show(j)));
+    // the bar's fill animation is the timer, so pausing it pauses the carousel
+    card.addEventListener('animationend', e => { if (e.animationName === 'hs-fill') show(active + 1); });
+    const pause = on => card.classList.toggle('is-paused', on || reduce);
+    card.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') pause(true); });
+    card.addEventListener('pointerleave', () => pause(false));
+    card.addEventListener('focusin', e => { if (e.target.matches(':focus-visible')) pause(true); });
+    card.addEventListener('focusout', () => pause(false));
+    let sx = null;
+    card.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    card.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) show(active + (dx < 0 ? 1 : -1));
+      sx = null;
+    });
+    // hold the timer until the card is on screen
+    const vis = new IntersectionObserver(es => card.classList.toggle('is-off', !es[0].isIntersecting));
+    vis.observe(card);
+    show(0); pause(false);
+  });
+
   /* ------------------------------------------------------------ Zimbabwe map */
   $$('[data-zim]').forEach(map => {
     const svg = $('svg', map);
@@ -418,6 +464,11 @@
   /* ------------------------------------------------------------ project filters */
   $$('[data-filters]').forEach(group => {
     const target = $(group.dataset.filters);
+    $$('button', group).forEach(b => {
+      const f = b.dataset.filter;
+      const n = $$('.pcard', target).filter(c => f === 'all' || c.dataset.type === f).length;
+      b.insertAdjacentHTML('beforeend', `<span class="filters__n" aria-hidden="true">${n}</span>`);
+    });
     $$('button', group).forEach(b => b.addEventListener('click', () => {
       $$('button', group).forEach(x => x.setAttribute('aria-pressed', x === b));
       const f = b.dataset.filter;

@@ -32,18 +32,69 @@ body_class: page-home
           </div>
         </article>
 
-        <article class="glass hcard hcard--media" data-reveal style="--d:.7s">
-          <div class="hcard__thumb">
-            <img src="assets/img/projects/job-04.webp" alt="Lumigrid installers fitting panels on a Harare roof" loading="lazy">
-            <a class="play play--sm" href="#" data-slideshow="jobs" aria-label="Play a slideshow of recent installations">
-              {{> i-play}}
-            </a>
+        <!-- Three-slide card: installs, live output, client rating. PLACEHOLDER figures and quote: confirm with Lumigrid -->
+        <article class="glass hcard hslides" data-reveal data-hslides style="--d:.7s" aria-roledescription="carousel" aria-label="Lumigrid at a glance">
+          <div class="hslides__track">
+            <div class="hslide hslide--installs is-active" role="group" aria-roledescription="slide" aria-label="1 of 3: installations">
+              <span class="pat pat--cells pat--tr" style="--pw:60%;--po:.11" aria-hidden="true"></span>
+              <div class="hcard__thumb">
+                <img src="assets/img/projects/job-04.webp" alt="Lumigrid installers fitting panels on a Harare roof" loading="lazy">
+                <a class="play play--sm" href="#" data-slideshow="jobs" aria-label="Play a slideshow of recent installations">
+                  {{> i-play}}
+                </a>
+              </div>
+              <div class="hcard__stat">
+                <div class="avatars" aria-hidden="true">
+                  <img src="assets/img/faces/tendai.webp" alt="" width="64" height="64">
+                  <img src="assets/img/faces/grace.webp" alt="" width="64" height="64">
+                  <img src="assets/img/faces/peter.webp" alt="" width="64" height="64">
+                  <i>+347</i>
+                </div>
+                <strong><span data-count="350">0</span>+</strong>
+                <span>Systems installed across Zimbabwe</span>
+              </div>
+            </div>
+
+            <div class="hslide hslide--live" role="group" aria-roledescription="slide" aria-label="2 of 3: live output">
+              <span class="pat pat--rays pat--br" style="--pw:90%;--po:.22" aria-hidden="true"></span>
+              <div class="hslide__body">
+                <p class="hslide__eyebrow"><i class="pulse" aria-hidden="true"></i>Live · sample 5 kW home</p>
+                <p class="hslide__big"><span data-live>0.00</span><small>kW</small></p>
+                <svg class="hslide__spark" data-spark viewBox="0 0 160 34" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+                <p class="hslide__meta"><span data-clock>Harare</span></p>
+              </div>
+              <div class="gauge" aria-hidden="true">
+                <svg viewBox="0 0 120 120">
+                  <circle class="gauge__track" cx="60" cy="60" r="50"/>
+                  <g class="gauge__ticks">
+                    <line x1="60" y1="4" x2="60" y2="9"/><line x1="116" y1="60" x2="111" y2="60"/><line x1="60" y1="116" x2="60" y2="111"/><line x1="4" y1="60" x2="9" y2="60"/>
+                  </g>
+                  <circle class="gauge__fill" cx="60" cy="60" r="50" pathLength="100" data-live-ring/>
+                </svg>
+                <span class="gauge__icon">{{> i-sun}}</span>
+                <span class="gauge__label"><b data-live-pct>0</b>% of peak</span>
+              </div>
+            </div>
+
+            <div class="hslide hslide--review" role="group" aria-roledescription="slide" aria-label="3 of 3: client rating">
+              <span class="pat pat--rings pat--tr" style="--pw:80%;--po:.12" aria-hidden="true"></span>
+              <div class="hslide__rating">
+                <b>4.9</b>
+                <span>
+                  <span class="stars" aria-label="Rated 4.9 out of 5">{{> i-star}}{{> i-star}}{{> i-star}}{{> i-star}}{{> i-star}}</span>
+                  <small>Average client rating</small>
+                </span>
+              </div>
+              <figure class="hslide__quote">
+                <blockquote>We honestly forget when ZESA is off now.</blockquote>
+                <figcaption><img src="assets/img/faces/tendai.webp" alt="" width="64" height="64"><span><b>Tendai M.</b>Homeowner, Borrowdale</span></figcaption>
+              </figure>
+            </div>
           </div>
-          <div class="hcard__stat">
-            <div class="avatars" aria-hidden="true"><i>TM</i><i>RC</i><i>NK</i></div>
-            <!-- PLACEHOLDER: confirm the installation count with Lumigrid -->
-            <strong><span data-count="350">0</span>+</strong>
-            <span>Systems installed across Zimbabwe</span>
+          <div class="hslides__nav" role="tablist" aria-label="Choose a slide">
+            <button type="button" role="tab" aria-selected="true" aria-label="Installations"><span></span></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Live output"><span></span></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Client rating"><span></span></button>
           </div>
         </article>
 
@@ -134,7 +185,7 @@ body_class: page-home
           <span class="chip mt-s">Energy independence plan</span>
         </article>
 
-        <article class="bcard bcard--panel" data-reveal style="--d:.1s">
+        <article class="bcard bcard--panel" data-reveal style="--d:.1s"><span class="pat pat--plus pat--bl" style="--pc:var(--sky-ink);--pw:80%;--po:.16" aria-hidden="true"></span>
           <div class="bcard__head">
             <span class="bcard__icon" aria-hidden="true">{{> i-sun}}</span>
             <span class="chip">Live · sample system</span>
@@ -146,20 +197,19 @@ body_class: page-home
           </div>
         </article>
 
-        <article class="bcard bcard--water" data-reveal style="--d:.2s">
+        <article class="bcard bcard--water" data-reveal style="--d:.2s"><span class="pat pat--waves pat--tr" style="--pc:#fff;--pw:70%;--po:.3" aria-hidden="true"></span>
           <svg class="waves" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
             <path d="M0 60 Q 50 30 100 60 T 200 60 T 300 60 T 400 60 T 500 60 V200 H0Z" fill="#fff" fill-opacity=".14"/>
             <path d="M0 90 Q 50 60 100 90 T 200 90 T 300 90 T 400 90 T 500 90 V200 H0Z" fill="#fff" fill-opacity=".16"/>
           </svg>
           <div class="bcard__head">
             <span class="bcard__icon" aria-hidden="true">{{> i-drop}}</span>
-            {{> i-dots}}
           </div>
           <p class="mono" style="margin-top:18px;opacity:.85">For borehole &amp; irrigation pumping</p>
           <p class="h3" style="font-size:clamp(1.5rem,2.4vw,2rem);font-weight:500;margin-top:6px">Up to <b style="font-weight:600">100%</b><br>diesel-free water.</p>
           <span class="chip mt-s" style="color:#fff">Solar pump systems</span>
           <div class="bcard__row">
-            <p style="font-size:.8rem;line-height:1.4">{{> i-drop}}<span style="opacity:.8">Daily yield</span><br>Typical farm</p>
+            <p class="bcard__label" style="color:rgba(255,255,255,.85)">Daily yield on a<br>typical farm</p>
             <p class="bcard__big" style="font-size:clamp(2.4rem,3.6vw,3.2rem)"><span data-count="25">0</span><small>m³/day</small></p>
           </div>
         </article>
@@ -207,21 +257,21 @@ body_class: page-home
           <p class="lede" data-reveal>One accountable team from the first site visit to the tenth year of service. You deal with Lumigrid, not a chain of subcontractors.</p>
         </div>
         <div class="trio">
-          <article class="tcard" data-reveal>
+          <article class="tcard" data-reveal><span class="pat pat--cells pat--tr" style="--pc:var(--amber);--pw:75%;--po:.32" aria-hidden="true"></span>
             <span class="tcard__num">01</span>
             <img class="tcard__obj" src="assets/img/3d/obj-panel.webp" alt="" aria-hidden="true" width="480" height="480" loading="lazy">
             <h3 class="h3">Solar Design &amp; Installation</h3>
             <p>Roof, ground or carport arrays engineered for Zimbabwe’s sun, wind loads and roof types, from IBR to clay tile.</p>
             <a class="link-arrow" href="services.html#install">Learn more {{> icon-arrow}}</a>
           </article>
-          <article class="tcard" data-reveal style="--d:.1s">
+          <article class="tcard" data-reveal style="--d:.1s"><span class="pat pat--hex pat--tr" style="--pc:var(--sky);--pw:75%;--po:.18" aria-hidden="true"></span>
             <span class="tcard__num">02</span>
             <img class="tcard__obj" src="assets/img/3d/obj-battery.webp" alt="" aria-hidden="true" width="480" height="480" loading="lazy">
             <h3 class="h3">Lithium Energy Storage</h3>
             <p>LiFePO4 batteries that carry you through the evening peak and night-time load-shedding, rated for thousands of cycles.</p>
             <a class="link-arrow" href="services.html#storage">Learn more {{> icon-arrow}}</a>
           </article>
-          <article class="tcard" data-reveal style="--d:.2s">
+          <article class="tcard" data-reveal style="--d:.2s"><span class="pat pat--rings pat--tr" style="--pc:var(--ink);--pw:85%;--po:.1" aria-hidden="true"></span>
             <span class="tcard__num">03</span>
             <img class="tcard__obj" src="assets/img/3d/obj-orb.webp" alt="" aria-hidden="true" width="480" height="480" loading="lazy">
             <h3 class="h3">Monitoring &amp; After-Sales</h3>
@@ -252,7 +302,7 @@ body_class: page-home
         <div class="section-head">
           <div>
             <span class="tag" data-reveal>Our work</span>
-            <h2 class="h2" data-split>Real installations. <span class="soft">Real Zimbabwean homes.</span></h2>
+            <h2 class="h2" data-split>Recent work on <span class="soft">Zimbabwean roofs.</span></h2>
           </div>
           <div class="stack" style="align-items:flex-start">
             <p class="lede" data-reveal>Every photo here is a Lumigrid job: panels on the roof, inverters and lithium storage on the wall, commissioned and handed over.</p>
