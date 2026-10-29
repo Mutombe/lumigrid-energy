@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="theme-color" content="#F8F4EC">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:image" content="assets/img/stock-2246916593-sunset-farm.webp">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/caveat-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // Failsafe: deferred scripts run before load, so if main.js has not booted by then it failed.
+    addEventListener('load', function () { if (!window.__lgReady) document.documentElement.classList.remove('js'); });
+  </script>
+</head>
+<body class="{{body_class}}">
+  <a class="skip" href="#main">Skip to content</a>
+  {{> header}}
+  <main id="main">
+{{body}}
+  </main>
+  {{> footer}}
+  {{> lightbox}}
+  <script src="assets/js/main.js" defer></script>
+  {{scripts}}
+</body>
+</html>

@@ -1,0 +1,114 @@
+---
+title: Solar Savings Calculator | Lumigrid Energy Zimbabwe
+description: Estimate the solar system size, monthly savings and payback for your home, business or farm in Zimbabwe, then request a Lumigrid quote.
+nav: savings
+scripts: <script src="assets/js/charts.js" defer></script>
+---
+    <section class="phero">
+      <div class="container">
+        <div class="phero__card">
+          <div class="phero__bg"><img src="assets/img/solar-field-green.webp" alt="" width="1024" height="701" style="--pos:50% 70%" fetchpriority="high" data-parallax="0.1"></div>
+          <img class="phero__obj" src="assets/img/3d/obj-orb.webp" alt="" aria-hidden="true" width="480" height="480">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Savings</span></nav>
+          <h1 class="h1" data-split>See what the sun <span class="accent accent--light">could save you.</span></h1>
+          <p class="lede" data-reveal style="--d:.3s">Move the sliders to match your ZESA bill, generator fuel and load-shedding hours. We’ll suggest a system size and show how the savings add up over ten years.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container calc">
+        <form class="calc__form" data-calc data-reveal aria-label="Savings calculator">
+          <div>
+            <span class="tag">Your energy today</span>
+          </div>
+          <fieldset class="field" style="border:0;padding:0;margin:0">
+            <legend class="label" style="margin-bottom:10px">Property type</legend>
+            <div class="seg">
+              <input type="radio" name="type" id="t-home" value="home" checked><label for="t-home">Home</label>
+              <input type="radio" name="type" id="t-biz" value="business"><label for="t-biz">Business</label>
+              <input type="radio" name="type" id="t-farm" value="farm"><label for="t-farm">Farm</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <div class="field__top"><label for="bill">Monthly ZESA bill</label><output for="bill">$60</output></div>
+            <input type="range" id="bill" name="bill" min="0" max="600" step="10" value="60" data-prefix="$">
+            <small>Average monthly spend on grid electricity (USD equivalent)</small>
+          </div>
+          <div class="field">
+            <div class="field__top"><label for="fuel">Monthly generator fuel</label><output for="fuel">$80</output></div>
+            <input type="range" id="fuel" name="fuel" min="0" max="800" step="10" value="80" data-prefix="$">
+            <small>Petrol or diesel bought to run a generator</small>
+          </div>
+          <div class="field">
+            <div class="field__top"><label for="shed">Load-shedding per day</label><output for="shed">10h</output></div>
+            <input type="range" id="shed" name="shed" min="0" max="20" step="1" value="10" data-suffix="h">
+            <small>Typical hours without grid power</small>
+          </div>
+        </form>
+
+        <div class="calc__out" data-calc-out>
+          <div class="calc__hero" data-reveal style="--d:.1s">
+            <img class="calc__obj" src="assets/img/3d/obj-battery.webp" alt="" aria-hidden="true" loading="lazy">
+            <p class="mono" style="color:rgba(255,255,255,.6)">Estimated monthly savings</p>
+            <p class="calc__big" aria-live="polite">$<span data-o="monthly">0</span><small> / month</small></p>
+            <div class="calc__grid">
+              <div><b data-o="size">–</b><span>Inverter</span></div>
+              <div><b data-o="pv">–</b><span>Solar array</span></div>
+              <div><b data-o="batt">–</b><span>Lithium storage</span></div>
+              <div><b data-o="payback">–</b><span>Payback</span></div>
+            </div>
+            <div class="row mt">
+              <a class="btn btn--amber" href="https://wa.me/263779056541" target="_blank" rel="noopener" data-calc-wa><span class="btn__icon" aria-hidden="true">{{> icon-arrow}}</span>Send this to Lumigrid</a>
+              <a class="btn btn--glass" href="contact.html#quote">Book a site visit</a>
+            </div>
+          </div>
+
+          <div class="chart-card" data-reveal style="--d:.15s">
+            <div class="chart-head">
+              <div>
+                <h2 class="h4">Ten-year energy spend</h2>
+                <p class="small">Total cost, prices rising 6% a year</p>
+              </div>
+              <div class="legend" aria-hidden="true">
+                <span><i style="background:#0B7BC0"></i>Without solar</span>
+                <span><i style="background:#B87A0E"></i>With Lumigrid</span>
+              </div>
+            </div>
+            <div class="chart"><div data-chart-savings style="position:relative"></div></div>
+            <div class="kpis">
+              <div><b data-o="ten">–</b><span>Saved over 10 years</span></div>
+              <div><b data-o="cost">–</b><span>Indicative system investment</span></div>
+              <div><b data-o="co2">–</b><span>CO2 avoided per year</span></div>
+            </div>
+            <details class="table-view">
+              <summary>View as table</summary>
+              <table data-table-savings></table>
+            </details>
+          </div>
+
+          <p class="note" data-reveal>Estimates for planning only: grid at $0.12/kWh, generator fuel at $0.55/kWh, 5.6 sun hours a day. Your quote follows a free site visit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--flush-top">
+      <div class="container">
+        <div class="sheet split">
+          <figure class="split__img" data-unveil>
+            <img src="assets/img/stock-1742670724-inverter-battery.webp" alt="A hybrid inverter and battery installed on a brick wall beside a solar panel" loading="lazy">
+          </figure>
+          <div class="split__body">
+            <span class="tag" data-reveal>Where savings come from</span>
+            <h2 class="h2" data-split>Three ways solar pays you back</h2>
+            <ul class="ilist">
+              <li data-reveal><span class="ibox ibox--soft" aria-hidden="true">{{> i-bolt}}</span><div><h3 class="h4">Lower ZESA bills</h3><p>Daytime loads run on your own panels, so you buy far fewer units from the grid.</p></div></li>
+              <li data-reveal style="--d:.08s"><span class="ibox ibox--soft" aria-hidden="true">{{> i-drop}}</span><div><h3 class="h4">No more fuel runs</h3><p>Batteries replace the generator during load-shedding: no fuel, no servicing, no noise.</p></div></li>
+              <li data-reveal style="--d:.16s"><span class="ibox ibox--soft" aria-hidden="true">{{> i-shield}}</span><div><h3 class="h4">Protected appliances</h3><p>Clean, stable power and surge protection extend the life of fridges, pumps and electronics.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{> cta-banner}}

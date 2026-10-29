@@ -1,0 +1,16 @@
+<div class="lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox__close" type="button" aria-label="Close" data-lb-close>
+      {{> i-x}}
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous" data-lb-prev>
+      {{> i-caret-left}}
+    </button>
+    <figure class="lightbox__figure">
+      <img data-lb-img alt="">
+      <figcaption data-lb-cap></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next" data-lb-next>
+      {{> i-caret-right}}
+    </button>
+    <div class="lightbox__progress" aria-hidden="true"><span data-lb-bar></span></div>
+  </div>

@@ -1,0 +1,27 @@
+<header class="nav" data-nav>
+    <div class="nav__bar">
+      <a class="brand" href="index.html" aria-label="Lumigrid Energy, home">
+        <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="326" height="167">
+        <img class="brand__word" src="assets/img/logo-word.png" alt="Lumigrid Energy" width="331" height="43">
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        {{nav_links}}
+      </nav>
+      <a class="btn btn--amber btn--sm nav__cta" href="contact.html#quote">
+        <span class="btn__icon" aria-hidden="true">{{> icon-arrow}}</span>Get a Quote
+      </a>
+      <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="menu" id="menu" data-menu hidden>
+    <div class="menu__glow" aria-hidden="true"></div>
+    <nav class="menu__links" aria-label="Mobile">
+      {{menu_links}}
+    </nav>
+    <div class="menu__foot">
+      <a href="tel:+263779056541">+263 77 905 6541</a>
+      <a href="https://wa.me/263779056541" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>

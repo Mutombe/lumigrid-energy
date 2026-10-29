@@ -1,0 +1,54 @@
+---
+title: Projects | Solar Installations by Lumigrid Energy, Harare
+description: Real solar installations by Lumigrid Energy across Harare and Zimbabwe: rooftop arrays, hybrid inverters and lithium battery storage.
+nav: projects
+---
+    <section class="phero">
+      <div class="container">
+        <div class="phero__card">
+          <div class="phero__bg"><img src="assets/img/new-builds.webp" alt="" width="1600" height="1032" fetchpriority="high" data-parallax="0.1"></div>
+          <img class="phero__obj" src="assets/img/3d/obj-hex.webp" alt="" aria-hidden="true" width="480" height="480">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Projects</span></nav>
+          <h1 class="h1" data-split>Our work, <span class="accent accent--light">on real roofs.</span></h1>
+          <p class="lede" data-reveal style="--d:.3s">Every photo here is a Lumigrid installation, commissioned and handed over to the client.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row row--between" style="margin-bottom:28px">
+          <h2 class="h3" data-reveal>Recent installations</h2>
+          <div class="filters" data-filters="#gallery" role="group" aria-label="Filter projects" data-reveal>
+            <button type="button" data-filter="all" aria-pressed="true">All work</button>
+            <button type="button" data-filter="roof" aria-pressed="false">Rooftop arrays</button>
+            <button type="button" data-filter="storage" aria-pressed="false">Inverters &amp; storage</button>
+          </div>
+        </div>
+        {{> jobs-masonry}}
+      </div>
+    </section>
+
+    <section class="section section--flush-top">
+      <div class="container">
+        <div class="sheet split">
+          <figure class="split__img" data-unveil>
+            <img src="assets/img/projects/job-12.webp" alt="A ground-mounted Lumigrid solar array in a side yard" loading="lazy" style="object-position:50% 30%">
+          </figure>
+          <div class="split__body">
+            <span class="tag" data-reveal>Our standard</span>
+            <h2 class="h2" data-split>What every Lumigrid install includes</h2>
+            <ul class="ilist">
+              <li data-reveal><span class="ibox ibox--soft" aria-hidden="true">{{> i-search}}</span><div><h3 class="h4">Load audit &amp; roof survey</h3><p>Right-sized for your appliances, roof orientation and shading.</p></div></li>
+              <li data-reveal style="--d:.08s"><span class="ibox ibox--soft" aria-hidden="true">{{> i-shield}}</span><div><h3 class="h4">Full DC &amp; AC protection</h3><p>Isolators, breakers, surge arrestors and proper earthing on every system.</p></div></li>
+              <li data-reveal style="--d:.16s"><span class="ibox ibox--soft" aria-hidden="true">{{> i-gear}}</span><div><h3 class="h4">Tidy, labelled cabling</h3><p>Trunking and labelling that look good on your wall and make servicing simple.</p></div></li>
+              <li data-reveal style="--d:.24s"><span class="ibox ibox--soft" aria-hidden="true">{{> i-chart}}</span><div><h3 class="h4">Handover &amp; monitoring</h3><p>We test under load, set up the monitoring app and show you how it all works.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{> coverage}}
+    {{> stats}}
+    {{> cta-banner}}
